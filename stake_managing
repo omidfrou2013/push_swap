@@ -1,0 +1,29 @@
+#include "push_swap.h"
+
+long long	ft_atoi(char *str)
+{
+	long long	res1;
+	int			vals[2];
+
+	res1 = 0;
+	vals[0] = 0;  
+	vals[1] = 0; 
+	while (str[vals[0]] == ' ' || str[vals[0]] == '\n' || str[vals[0]] == '\t' || \
+		str[vals[0]] == '\v' || str[vals[0]] == '\f' || str[vals[0]] == '\r')
+		vals[0]++;
+	if (str[vals[0]] == '+' || str[vals[0]] == '-')
+	{
+		if (str[vals[0]] == '-')
+			vals[1] = 1;
+		vals[0]++;
+	}
+	while (str[vals[0]] >= '0' && str[vals[0]] <= '9')
+	{
+		if (vals[1])
+			res1 = res1 * 10 + (str[vals[0]] - 48) * -1;
+		else
+			res1 = res1 * 10 + (str[vals[0]] - 48);
+		vals[0]++;
+	}
+	return (res1);
+}
